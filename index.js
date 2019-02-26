@@ -32,7 +32,8 @@ server.post("/charge", (req, res) => {
         customer: customer.id
       })
     )
-    .then(charge => res.json({ message: "Charge was successful" }));
+    .then(charge => res.json({ message: "Charge was successful" }))
+    .catch(() => res.status(500).json({ message: "Stripe Error" }));
 });
 
 const port = process.env.PORT || 5000;
